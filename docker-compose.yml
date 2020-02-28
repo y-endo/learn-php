@@ -1,0 +1,35 @@
+version: "3"
+services:
+  php:
+    build:
+      context: "./docker/php"
+    container_name: "learn-php-php"
+    volumes:
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./public/:/var/www/html
+    ports:
+      - 8080:80
+  mysql:
+    image: mysql:5.7
+    container_name: "bbs-php-mysql"
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bbs-php
+      - MYSQL_USER=bbs-php
+      - MYSQL_PASSWORD=bbs-php
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: "learn-php-phpmyadmin"
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+      - PMA_USER=learn-php
+      - PMA_PASSWORD=learn-php
+    links:
+      - mysql
+    ports:
+      - 4040:80
+    volumes:
+      - ./docker/phpmyadmin/sessions:/sessions
