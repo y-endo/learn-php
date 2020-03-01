@@ -69,6 +69,61 @@ sayHoge();
 
 echo __DIR__;
 echo __FILE__;
+
+echo '<br>';
+
+function hoge(string $a, int $b, ...$c)
+{
+    echo '<pre>';
+    var_dump($a);
+    echo '<br>';
+    var_dump($b);
+    echo '<br>';
+    var_dump($c);
+    echo '</pre>';
+}
+hoge('b', 5, 'c', 1, ['c' => 'c']);
+
+function fuga1()
+{
+    echo 'fuga1';
+}
+function hoge2(callable $func)
+{
+    $func();
+    echo 'hoge2';
+}
+hoge2('fuga1');
+
+require_once './classes/Product.php';
+$product = new Product(['テスト']);
+echo '<br>';
+
+var_dump($product->getProducts());
+echo '<br>';
+
+$product->addProduct('テスト2');
+var_dump($product->getProducts());
+echo '<br>';
+
+echo Product::getClassName();
+echo '<br>';
+
+echo Product::STATIC_CONST;
+echo '<br>';
+
+$product->echoProduct();
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use App\Controllers\TestController;
+
+$app = new TestController();
+$app -> run();
+
+use Carbon\Carbon;
+
+echo Carbon::now();
 ?>
 </body>
 </html>

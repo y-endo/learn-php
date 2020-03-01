@@ -1,6 +1,6 @@
 <?php
 
-function validation($data)
+function validation(object $data)
 {
     $error = [];
 

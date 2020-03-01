@@ -1,0 +1,17 @@
+{
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "name": "yuki.a.endo/public",
+  "authors": [
+    {
+      "name": "YukiEndo",
+      "email": "yuki.a.endo@imjp.co.jp"
+    }
+  ],
+  "require": {
+    "nesbot/carbon": "^2.30"
+  }
+}
